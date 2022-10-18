@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Whats App Web
+</body>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    window.addEventListener('load', () => {
+        console.log('start ho gya')
+        var socket = io();
+        console.log(socket);
+
+        socket.on('id', (id) => {
+            console.log('got id', id)
+        })
+
+        socket.on('qr', (id) => {
+            console.log('qr', id)
+        })
+        socket.on('authenticated', (id) => {
+            console.log('authenticated', id)
+        })
+        socket.on('auth_failure', ({ id, msg }) => {
+            console.log('auth_failure', { id, msg })
+        })
+        socket.on('change_state', (id) => {
+            console.log('change_state', id)
+        })
+        socket.on('ready', (id) => {
+            console.log('ready', id)
+        })
+        socket.on('connection', () => console.log('connection'))
+        socket.on('connect', () => console.log('connect'))
+        socket.on('disconnect', () => console.log('server disconnected'))
+
+    })
+</script>
+</html>
