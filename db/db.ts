@@ -1,7 +1,6 @@
 import mongoose from 'mongoose';
 //process.env.MONGO_URI1 || 
-var conn_string = 'mongodb+srv://vastweb:AZIhnP0GiD8HXJKT@cluster0.vrtnp.mongodb.net/whatsappDB_Test1?retryWrites=true&w=majority';
-// mongodb+srv://whatsapp_user:8ok9Qp4S5fF0bwfK@cluster0.2hobu.mongodb.net/whatsappDB?retryWrites=true&w=majority
+var conn_string = process.env.MONGO_URI as string
 
 class Connection {
   private connString: string;
