@@ -69,9 +69,10 @@ async function InitClient(id: string) {
             }
         });
         
-        client.on('authenticated', () => {
+        client.on('authenticated', async () => {
             console.log('AUTHENTICATED', { id });
             wss.emit('authenticated', { id });
+            await update_session({ clientId: id }, { isReady: true, qr: null });
         });
         
         client.on('auth_failure', async (msg) => {

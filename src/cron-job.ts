@@ -1,7 +1,7 @@
 import CronJob from 'cron'
 import { WAState } from 'whatsapp-web.js';
 import { fetch_sessions, remove_session, update_session } from './db.service';
-import { ISessionModel } from './interfaces';
+import { ISession, ISessionModel } from './interfaces';
 import SessionData from './SessionData';
 import { get_status } from './whatsapp-services';
 
@@ -10,11 +10,12 @@ var job = new CronJob.CronJob(
 	'0 0/1 * * *',
 	async function() {
 		console.log('Every Hour', new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }));
-        var all_sessions = await fetch_sessions();
-
-        all_sessions.forEach(async (s: ISessionModel) => {
+        // var all_sessions = await fetch_sessions();
+        
+        SessionData.sessions.forEach(async (s: ISession) => {
             try {
-                var session_obj = SessionData.getSessionByID(s.clientId);
+                // var session_obj = SessionData.getSessionByID(s.clientId);
+                var session_obj = s;
                 if(session_obj)
                 {
                     var status: any = WAState.CONFLICT;

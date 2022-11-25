@@ -2,11 +2,11 @@ import fs from "fs";
 import path from "path";
 
 class Logger {
-    LOG_FILE: string = 'logger.txt';
+    LOG_FILE: string = new Date().toLocaleDateString() + '_logger.txt';
 
     log(log_data: string, type = 'Exception') {
         try {
-            var file_path = path.join(__dirname, '..', this.LOG_FILE);
+            var file_path = path.join(__dirname, '..', 'logs', this.LOG_FILE);
             // this.createSessionsFileIfNotExists(file_path);
 
             var data = new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }) + ', type: ' + type + ', ' +  log_data + '\r\n';

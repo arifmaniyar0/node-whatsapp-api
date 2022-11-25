@@ -1,0 +1,4 @@
+31/10/2022, 12:25:59 pm, type: uncaughtException, Evaluation failed: TypeError: Cannot read properties of undefined (reading 'isMDBackend')
+    at __puppeteer_evaluation_script__:13:68
+31/10/2022, 12:30:50 pm, type: uncaughtException, Protocol error (Runtime.callFunctionOn): Target closed.
+31/10/2022, 12:31:30 pm, type: get-status, Error: session not found with id 123456789

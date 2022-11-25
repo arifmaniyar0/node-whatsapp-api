@@ -34,35 +34,20 @@ class App {
 
         new WhatsAppSocket(_io);
 
-        fetch_sessions().then(async (data) => {
-            // data.forEach(async (s) => {
-            //     if(s.isReady) {
-            //         // await this.InitWait(s.clientId);
-            //         console.log('init done', data.length)
-            //         return;
-            //     }
-            //     else {
-            //         var session_date = new Date(s.createdAt);
-            //         session_date.setDate(session_date.getDate() + 20);
-            //         if(session_date < new Date()) {
-            //             remove_session(s.clientId);
-            //         }
-            //     }
-            // })
-
-            for(let i = 0; i < data.length; i++) {
-                if(data[i].isReady) {
-                    await this.InitWait(data[i].clientId);
-                }
-                else {
-                    var session_date = new Date(data[i].createdAt);
-                    session_date.setDate(session_date.getDate() + 20);
-                    if(session_date < new Date()) {
-                        remove_session(data[i].clientId);
-                    }
-                }
-            }
-        });
+        // fetch_sessions().then(async (data) => {
+        //     for(let i = 0; i < data.length; i++) {
+        //         if(data[i].isReady) {
+        //             await this.InitWait(data[i].clientId);
+        //         }
+        //         else {
+        //             var session_date = new Date(data[i].createdAt);
+        //             session_date.setDate(session_date.getDate() + 20);
+        //             if(session_date < new Date()) {
+        //                 remove_session(data[i].clientId);
+        //             }
+        //         }
+        //     }
+        // });
 
         
         this.app.get('/', (_, res) => {

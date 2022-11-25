@@ -7,6 +7,7 @@ import Logger from './Logger';
 import { InitExistClient } from './SessionInit';
 import { ISessionModel } from './interfaces';
 import SessionData from './SessionData';
+import App from '../app';
 
 const router = Router();
 
@@ -20,6 +21,7 @@ export default (app: Express): Router => {
 
             var cl_data = sessionData.getSessionByID(sender);
             if(!cl_data) {
+                await new App().init(sender);
                 throw new Error('session not found with id ' + sender);
             }
 
